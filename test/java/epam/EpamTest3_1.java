@@ -59,7 +59,7 @@ public class EpamTest3_1 {
 
         //30,70
 
-        actions().dragAndDropBy($$(By.cssSelector(".ui-slider-handle")).get(1).toWebElement(), -196, 0).perform(); // could use some help ova' hea'
+        actions().dragAndDropBy($$(By.cssSelector(".ui-slider-handle")).get(1).toWebElement(), -196, 0).perform();
         actions().dragAndDropBy($$(By.cssSelector(".ui-slider-handle")).get(0).toWebElement(), 0, 0).perform();
         actions().dragAndDropBy($$(By.cssSelector(".ui-slider-handle")).get(1).toWebElement(), -85, 0).perform();
 
