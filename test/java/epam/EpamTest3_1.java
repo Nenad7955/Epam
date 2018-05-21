@@ -29,11 +29,9 @@ public class EpamTest3_1 {
         $("li.sub-menu").click();
         //$("ul.sub").find(By.linkText("Dates")).click();
         //$("ul.sub").$(By.linkText("Dates")).click();
+        
+        //clicking on Dates(through xpath) through left menu
         $("ul.sub").$x("//*[@id='mCSB_1_container']/ul/li[3]/ul/li[2]/a/p/span").click();
-
-
-        String a = "/html/body/div/div/main/div[2]/div/form/div[4]/div[2]/div/a[1]";
-
 
         //0,100
         actions().dragAndDropBy($$(By.cssSelector(".ui-slider-handle")).get(0).toWebElement(), -200, 0).perform();
