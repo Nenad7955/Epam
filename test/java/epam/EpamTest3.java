@@ -62,34 +62,35 @@ public class EpamTest3 {
 
     @Test
     public void DEP() {
+        //openning Different Elements
         work.homePage.subServices.click();
         work.homePage.subServices.findElement(By.cssSelector("ul.sub")).findElement(By.linkText("Different elements")).click();
         Assert.assertEquals(work.homePage.driver.getTitle(), "Different Element");
 
-
+        //checking for checkbox, radio, dropdown and 2 buttons
         Assert.assertEquals(work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("label.label-checkbox")).size(), 4);
         Assert.assertEquals(work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("label.label-radio")).size(), 4);
         Assert.assertTrue(work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("div.colors")).get(0).isDisplayed()); //dropdown
         Assert.assertEquals(work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("button")).get(0).isDisplayed(), true);
         Assert.assertEquals(work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("input")).get(0).isDisplayed(), true);
 
-
-        //System.out.println(work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("info-panel-header")));
+        //selecting water and wind
         work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("label.label-checkbox")).get(0).click();
         work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("label.label-checkbox")).get(2).click();
-
+        //checking if they are selected
         Assert.assertTrue(work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("input")).get(0).isSelected());
         Assert.assertTrue(work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("input")).get(2).isSelected());
 
+        //selecting selen and checking if selected
         work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("label.label-radio")).get(3).click();
         Assert.assertTrue(work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("input")).get(7).isSelected());
 
-        //work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("div.colors")).get(0).click();
-        //work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("div.colors")).va
+        //selecting yellow and checking if selected
         Select color = new Select(work.homePage.driver.findElement(By.cssSelector("select.uui-form-element")));
         color.selectByIndex(3);
         Assert.assertEquals(color.getAllSelectedOptions().get(0).getText(), "Yellow");
 
+        //checking in logs if all operations are done correctly 
         Assert.assertTrue(work.homePage.driver.findElement(By.cssSelector("ul.panel-body-list.logs")).getText().contains(change.waterChecked.value));
         Assert.assertTrue(work.homePage.driver.findElement(By.cssSelector("ul.panel-body-list.logs")).getText().contains(change.windChecked.value));
         Assert.assertTrue(work.homePage.driver.findElement(By.cssSelector("ul.panel-body-list.logs")).getText().contains(change.yellowChecked.value));
@@ -98,10 +99,10 @@ public class EpamTest3 {
         //uncheck water and wind
         work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("label.label-checkbox")).get(0).click();
         work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("label.label-checkbox")).get(2).click();
-
+        //checking if they are unselected
         Assert.assertFalse(work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("input")).get(0).isSelected());
         Assert.assertFalse(work.homePage.driver.findElement(By.cssSelector("div.main-content-hg")).findElements(By.cssSelector("input")).get(2).isSelected());
-
+        //checking again in logs
         Assert.assertTrue(work.homePage.driver.findElement(By.cssSelector("ul.panel-body-list.logs")).getText().contains(change.waterUnchecked.value));
         Assert.assertTrue(work.homePage.driver.findElement(By.cssSelector("ul.panel-body-list.logs")).getText().contains(change.windUnchecked.value));
     }
